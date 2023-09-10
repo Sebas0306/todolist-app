@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>To-Do List</title>
+    <title>Gestor de tareas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-4 text-center">To-Do List</h1>
+        <h1 class="mt-4 text-center">Gestor de tareas</h1>
 
-        <h2 class="mt-4">Tasks</h2>
+        <h2 class="mt-4">Tareas</h2>
 
         @foreach($tasks as $key => $task)
             <div class="card mt-3">
@@ -46,7 +46,7 @@
                 <label for="due_date">Fecha de vencimiento:</label>
                 <input type="date" class="form-control col-7" id="due_date" name="due_date"  required>
             </div>    
-            <button type="submit" class="btn- btn-success">Agregar tarea</button>
+            <button type="submit" class="btn btn-success mb-4">Agregar tarea</button>
         </form>
     </div>
 
