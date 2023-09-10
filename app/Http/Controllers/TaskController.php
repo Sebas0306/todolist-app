@@ -35,4 +35,15 @@ class TaskController extends Controller
         }
         return redirect()->route('tasks.index');
     }
+    public function delete($task)
+{
+    $tasks = Session::get('tasks', []);
+
+    if (isset($tasks[$task])) {
+        unset($tasks[$task]);
+        Session::put('tasks', $tasks);
+    }
+
+    return redirect()->route('tasks.index');
+}
 }

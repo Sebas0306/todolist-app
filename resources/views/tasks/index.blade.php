@@ -7,19 +7,25 @@
     <h1>To-Do List</h1>
 
     <h2>Tareas</h2>
-    <ul>
-        @foreach ($tasks as $key => $task) 
-            <li>
-                <form method="POST" action="{{ route('tasks.update', $key) }}">
-                    @method('PUT')
-                    @csrf
-                    <input type="checkbox" {{ $task['completed'] ? 'checked' : '' }}>
-                    {{ $task['name'] }} (Fecha de vencimiento: {{ $task['due_date'] }})
-                    <button type="submit">Marcar como {{ $task['completed'] ? 'pendiente' : 'completa' }}</button>
-                </form>
-            </li>
-       @endforeach
-    </ul>
+
+    @foreach($tasks as $key => $task)
+        <div class="task">
+            <p>{{ $task['name'] }}</p>
+            <p>Fecha de vencimiento: {{ $task['due_date'] }}</p>
+            <p>Estado: {{ $task['completed'] ? 'Completada' : 'Pendiente' }}</p>
+            <form method="POST" action="{{ route('tasks.update', $key) }}">
+            @method('PUT')
+            @csrf
+            <button type="submit">Marcar como {{ $task['completed'] ? 'pendiente' : 'completa' }}</button>
+            </form>
+            <form method="POST" action="{{ route('tasks.destroy', $key) }}" style="display: inline;">
+            @method('DELETE')
+            @csrf
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+        </div>
+    @endforeach
+
 
     <h2>Agregar Tarea</h2>
     <form method="POST" action="{{ route('tasks.store') }}">
